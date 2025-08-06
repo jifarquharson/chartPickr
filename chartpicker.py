@@ -509,8 +509,7 @@ def get_options_for_level(selected_option):
 st.set_page_config(page_title="chartPickr", layout="centered")
 st.title("chartPickr")
 st.markdown("""
-<span style="background-color:#f0f0f0; color:#d6336c; font-family: monospace; padding: 3px 6px; border-radius: 4px;">
-`chartPickr`</span> is a tool that can give an idea of which kind of data visualisation to use, depending on what we want to show. Follow the prompts to discover a chart type suited to your data. Note that there are many other ways of visualising data!
+`chartPickr` is a tool that can give an idea of which kind of data visualisation to use, depending on what we want to show. Follow the prompts to discover a chart type suited to your data. Note that there are many other ways of visualising data!
 """)
 # --- Seed input
 def get_seed():
