@@ -507,7 +507,7 @@ def get_options_for_level(selected_option):
 
 # --- App start
 st.set_page_config(page_title="chartPickr", layout="centered")
-st.title("chartPickr")
+st.title("📊 chartPickr")
 st.markdown("""
 `chartPickr` is a tool that can give an idea of which kind of data visualisation to use, depending on the properties of the data and what you want to show. Follow the prompts to discover a chart type suited to your data. Note that there are many other ways of visualising data!
 """)
