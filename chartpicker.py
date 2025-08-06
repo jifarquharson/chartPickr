@@ -295,17 +295,21 @@ def norm_stack_area_chart(seed):
     return fig
 
 def plot_matrix():
-    
     iris = load_iris()
     iris_df = pd.DataFrame(iris.data, columns=iris.feature_names)
     iris_df['target'] = iris.target
-    target_names = iris.target_names
-    fig = scatter_matrix(iris_df.iloc[:, :-1],
-                   alpha=0.8,
-                   c=iris_df['target'].tolist(),  figsize=(2, 2), cmap="Greys", diagonal='hist',
-                        hist_kwds={'color':'lightgrey','edgecolor':'k', 'histtype':'stepfilled'})
 
-    for ax in fig.flatten():
+    ax_array = scatter_matrix(
+        iris_df.iloc[:, :-1],
+        alpha=0.8,
+        c=iris_df['target'].tolist(),  # Ensure it's a list
+        figsize=(2, 2),
+        cmap="Greys",
+        diagonal='hist',
+        hist_kwds={'color': 'lightgrey', 'edgecolor': 'k', 'histtype': 'stepfilled'}
+    )
+
+    for ax in ax_array.flatten():
         ax.set_xticks([])
         ax.set_yticks([])
         ax.set_xticklabels([])
@@ -313,7 +317,7 @@ def plot_matrix():
         ax.set_ylabel("")
         ax.set_xlabel("")
 
-    
+    fig = ax_array[0, 0].figure
     return fig
 
 def circ_area_chart(seed):
@@ -560,7 +564,7 @@ if selection:
 while current_selection and level < max_levels:
     key = f"level_{level}"
     options = get_options_for_level(current_selection)
-    if current_selection and not bool(options):  # 👈 use bool() to avoid ambiguity
+    if current_selection and not bool(options):
         plot_example(current_selection, seed)
     if not options:
         break
