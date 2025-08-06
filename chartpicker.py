@@ -23,7 +23,9 @@ def column_chart(seed):
     ax.yaxis.set_ticks([])
     ax.xaxis.set_ticks([])
     ax.set_title('Column Chart', fontsize = "xx-small")
-    plt.show()
+    ax.legend(fontsize="xx-small")
+    
+    return fig
 
 def bar_chart(seed):
     np.random.seed(seed)
@@ -43,7 +45,9 @@ def bar_chart(seed):
     ax.yaxis.set_ticks([])
     ax.xaxis.set_ticks([])
     ax.set_title('Bar Chart', fontsize = "xx-small")
-    plt.show()
+    ax.legend(fontsize="xx-small")
+    
+    return fig
 
 def xy_chart(seed):
     np.random.seed(seed)
@@ -62,7 +66,9 @@ def xy_chart(seed):
     ax.set_title('Scatter Plot', fontsize = "xx-small")
     ax.set_ylim(ymin=0)
     ax.set_xlim(xmin=0)
-    plt.show()
+    ax.legend(fontsize="xx-small")
+    
+    return fig
 
 
 def bar_hist_chart(seed):
@@ -77,7 +83,9 @@ def bar_hist_chart(seed):
     ax.yaxis.set_ticks([])
     ax.xaxis.set_ticks([])
     ax.set_title('Histogram Plot (Bar)', fontsize = "xx-small")
-    plt.show()
+    ax.legend(fontsize="xx-small")
+    
+    return fig
 
 
 def line_hist_chart(seed):
@@ -96,7 +104,9 @@ def line_hist_chart(seed):
     ax.yaxis.set_ticks([])
     ax.xaxis.set_ticks([])
     ax.set_title('Histogram Plot (Line)', fontsize = "xx-small")
-    plt.show()
+    ax.legend(fontsize="xx-small")
+    
+    return fig
 
 def line_chart(seed):
     np.random.seed(seed)
@@ -113,7 +123,9 @@ def line_chart(seed):
     ax.xaxis.set_ticks([])
     ax.set_ylim(ymin=min(values1)-1, ymax=max(values1)+1)
     ax.set_title('Line Chart', fontsize = "xx-small")
-    plt.show()
+    ax.legend(fontsize="xx-small")
+    
+    return fig
 
 def mult_line_chart(seed):
     np.random.seed(seed)
@@ -132,7 +144,9 @@ def mult_line_chart(seed):
     ax.yaxis.set_ticks([])
     ax.xaxis.set_ticks([])
     ax.set_title('Line Chart', fontsize = "xx-small")
-    plt.show()
+    ax.legend(fontsize="xx-small")
+    
+    return fig
     
 def threeD_chart(seed):
     np.random.seed(seed)
@@ -162,7 +176,9 @@ def threeD_chart(seed):
     ax.zaxis.pane.edgecolor = 'black'
 
     ax.set_title('3D Area Chart', fontsize = "xx-small")
-    plt.show()
+    ax.legend(fontsize="xx-small")
+    
+    return fig
 
 def bubble_chart(seed):
     np.random.seed(seed)
@@ -182,7 +198,9 @@ def bubble_chart(seed):
     ax.set_title('Bubble Plot', fontsize = "xx-small")
     ax.set_ylim(ymin=0)
     ax.set_xlim(xmin=0)
-    plt.show()
+    ax.legend(fontsize="xx-small")
+    
+    return fig
 
 def waterfall_chart(seed):
     np.random.seed(seed)
@@ -202,7 +220,9 @@ def waterfall_chart(seed):
     ax.xaxis.set_ticks([])
     ax.set_title('Waterfall Chart', fontsize = "xx-small")
 
-    plt.show()
+    ax.legend(fontsize="xx-small")
+    
+    return fig
 
 def stack_col_chart(seed):
     np.random.seed(seed)
@@ -221,7 +241,9 @@ def stack_col_chart(seed):
     ax.xaxis.set_ticks([])
     ax.set_title('Stacked Column Chart', fontsize = "xx-small")
 
-    plt.show()
+    ax.legend(fontsize="xx-small")
+    
+    return fig
 
 
 def stack_area_chart(seed):
@@ -241,7 +263,9 @@ def stack_area_chart(seed):
     ax.xaxis.set_ticks([])
     ax.set_title('Stacked Area Chart', fontsize = "xx-small")
 
-    plt.show()
+    ax.legend(fontsize="xx-small")
+    
+    return fig
 
 
 def norm_stack_area_chart(seed):
@@ -262,7 +286,9 @@ def norm_stack_area_chart(seed):
     ax.xaxis.set_ticks([])
     ax.set_title('Normalised Stacked Area Chart', fontsize = "xx-small")
 
-    plt.show()
+    ax.legend(fontsize="xx-small")
+    
+    return fig
 
 def plot_matrix():
     
@@ -282,7 +308,9 @@ def plot_matrix():
         ax.set_yticklabels([])
         ax.set_ylabel("")
         ax.set_xlabel("")
-    plt.show()
+    ax.legend(fontsize="xx-small")
+    
+    return fig
 
 def circ_area_chart(seed):
     np.random.seed(seed)
@@ -295,7 +323,9 @@ def circ_area_chart(seed):
     ax.yaxis.set_ticks([])
     ax.xaxis.set_ticks([])
     ax.set_title('Circular Area Chart', fontsize = "xx-small")
-    plt.show()
+    ax.legend(fontsize="xx-small")
+    
+    return fig
 
 def pie_chart(seed):
     np.random.seed(seed)
@@ -307,7 +337,9 @@ def pie_chart(seed):
     ax.yaxis.set_ticks([])
     ax.xaxis.set_ticks([])
     ax.set_title('Pie Chart', fontsize = "xx-small")
-    plt.show()
+    ax.legend(fontsize="xx-small")
+    
+    return fig
 
 def norm_component_chart(seed):
     np.random.seed(seed)
@@ -333,7 +365,9 @@ def norm_component_chart(seed):
     plt.plot([categories[1]+.25, categories[2]-.25],
              [norm_values[0][1], 100], "K", ls="-.", lw=.5)
     
-    plt.show()
+    ax.legend(fontsize="xx-small")
+    
+    return fig
     
 def var_width_chart(seed):
     np.random.seed(seed)
@@ -367,7 +401,57 @@ def norm_stack_col_chart(seed):
     ax.xaxis.set_ticks([])
     ax.set_title('Normalised stacked Column Chart', fontsize = "xx-small")
 
-    plt.show()
+    ax.legend(fontsize="xx-small")
+    
+    return fig
+    
+# --- Chart plotter
+
+def plot_example(chart, seed):
+    if chart == "Variable width column chart":
+        fig = var_width_chart(seed)
+    elif chart == "Table or matrix":
+        fig = plot_matrix()
+    elif chart == "Bar chart":
+        fig = bar_chart(seed)
+    elif chart == "Column chart":
+        fig = column_chart(seed)
+    elif chart == "Circular area chart":
+        fig = circ_area_chart(seed)
+    elif chart == "Line chart":
+        fig = line_chart(seed)
+    elif chart == "Multi-line chart":
+        fig = mult_line_chart(seed)
+    elif chart == "Column histogram":
+        fig = bar_hist_chart(seed)
+    elif chart == "Line histogram":
+        fig = line_hist_chart(seed)
+    elif chart == "Scatter (xy) plot":
+        fig = xy_chart(seed)
+    elif chart == "3D area chart":
+        fig = threeD_chart(seed)
+    elif chart == "Bubble chart":
+        fig = bubble_chart(seed)
+    elif chart == "Normalised stacked column chart":
+        fig = norm_stack_col_chart(seed)
+    elif chart == "Stacked column chart":
+        fig = stack_col_chart(seed)
+    elif chart == "Normalised stacked area chart":
+        fig = norm_stack_area_chart(seed)
+    elif chart == "Stacked area chart":
+        fig = stack_area_chart(seed)
+    elif chart == "Pie chart":
+        fig = pie_chart(seed)
+    elif chart == "Waterfall chart":
+        fig = waterfall_chart(seed)
+    elif chart == "Normalised column chart with subcomponents":
+        fig = norm_component_chart(seed)
+    else:
+        st.write("You broke the function")
+        return
+
+    st.pyplot(fig)
+    
 # --- Chart suggestion logic
 def get_options_for_level(selected_option):
     dist_dict = {
@@ -414,40 +498,6 @@ def get_options_for_level(selected_option):
     }
     return dist_dict.get(selected_option, [])
 
-# --- Plot generator using seed
-def plot_example(chart):
-    st.markdown(f"### Example: {chart}")
-    fig, ax = plt.subplots()
-
-    if chart == "Line chart":
-        y = np.cumsum(np.random.randn(10))
-        ax.plot(y)
-        ax.set_title("Line chart")
-
-    elif chart == "Bar chart":
-        labels = ["A", "B", "C", "D"]
-        values = np.random.randint(5, 20, size=len(labels))
-        ax.bar(labels, values)
-        ax.set_title("Bar chart")
-
-    elif chart == "Pie chart":
-        sizes = np.random.randint(1, 10, size=3)
-        labels = ["X", "Y", "Z"]
-        ax.pie(sizes, labels=labels)
-        ax.set_title("Pie chart")
-
-    elif chart == "Scatter (xy) plot":
-        x = np.random.randn(50)
-        y = x + np.random.randn(50) * 0.5
-        ax.scatter(x, y)
-        ax.set_title("Scatter plot")
-
-    else:
-        ax.text(0.5, 0.5, f"[{chart}]", ha='center', va='center', fontsize=16)
-        ax.axis('off')
-
-    st.pyplot(fig)
-
 # --- App start
 st.set_page_config(page_title="Chart Picker", layout="centered")
 st.title("Chart Picker")
@@ -455,7 +505,7 @@ st.markdown("Follow the prompts to discover a chart type suited to your data.")
 
 # --- Seed input
 def get_seed():
-    user_input = st.text_input("Please input an integer value from 0 to 4294967295: ", value="0")
+    user_input = st.text_input("Please input an integer value from 0 to 4294967295: ", value="55346")
     error = None
     seed = None
 
