@@ -539,12 +539,7 @@ if seed is not None:
 else:
     st.write("Please enter a valid seed.")
 
-# --- Reset button ---
-if st.button("🔄 Reset selection"):
-    for key in list(st.session_state.keys()):
-        if key.startswith("level_"):
-            del st.session_state[key]
-    st.rerun()
+
 
 # --- Chart selection logic ---
 level = 0
@@ -582,3 +577,10 @@ while current_selection and level < max_levels:
         level += 1
     else:
         break
+
+# --- Reset button ---
+if st.button("🔄 Reset selection"):
+    for key in list(st.session_state.keys()):
+        if key.startswith("level_"):
+            del st.session_state[key]
+    st.rerun()
