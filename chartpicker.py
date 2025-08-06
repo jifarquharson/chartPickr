@@ -565,8 +565,6 @@ if selection:
 while current_selection and level < max_levels:
     key = f"level_{level}"
     options = get_options_for_level(current_selection)
-    if current_selection and not bool(options):
-        plot_example(current_selection, seed)
     if not options:
         break
 
