@@ -541,7 +541,9 @@ else:
 
 # --- Reset button
 if st.button("🔄 Reset selection"):
-    st.session_state.clear()
+    for key in list(st.session_state.keys()):
+        if key.startswith("level_"):
+            del st.session_state[key]
     st.rerun()
 
 # --- Chart selection logic
