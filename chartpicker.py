@@ -545,7 +545,7 @@ selected = st.selectbox("Select chart category", options=["Comparison", "Distrib
 while selected:
     options = get_options_for_level(selected)
     if not options:
-        plot_example(selected)
+        plot_example(selected, seed)
         break
     level += 1
     next_key = f"level_{level}"
