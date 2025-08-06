@@ -454,9 +454,33 @@ st.title("Chart Picker")
 st.markdown("Follow the prompts to discover a chart type suited to your data.")
 
 # --- Seed input
-user_seed = st.text_input("Enter a seed (any number or word)", value="default-seed")
-random.seed(user_seed)
-np.random.seed(abs(hash(user_seed)) % (2**32))
+def get_seed():
+    user_input = st.text_input("Please input an integer value from 0 to 4294967295: ", value="0")
+    error = None
+    seed = None
+
+    if user_input:
+        try:
+            val = int(user_input)
+            if 0 <= val <= 2**32 - 1:
+                seed = val
+            else:
+                error = "Number out of range"
+        except ValueError:
+            error = "That's not an integer"
+
+    if error:
+        st.error(error)
+
+    return seed
+
+# Usage
+seed = get_seed()
+if seed is not None:
+    st.write(f"Using seed: {seed}")
+    # then use np.random.seed(seed), etc.
+else:
+    st.write("Please enter a valid seed.")
 
 # --- Reset button
 if st.button("🔄 Reset selection"):
