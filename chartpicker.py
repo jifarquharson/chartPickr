@@ -548,30 +548,23 @@ if st.button("🔄 Reset selection"):
 
 # --- Chart selection logic
 level = 0
-current_selection = None
-max_levels = 10
+selected = "start"  # or however you define the first level
 
-# First dropdown (static)
-current_options = ["Comparison", "Distribution", "Relationship", "Composition"]
-selection = st.selectbox("Select", current_options, key="level_0")
+while selected:
+    options = get_options_for_level(selected)
+    if not options:
+        plot_example(selected, seed)
+        break
 
-# If first selection is made, continue to next level
-if selection:
-    current_selection = selection
-    level = 1  # start from level 1
+    key = f"level_{level}"
 
-    while level < max_levels:
-        next_options = get_options_for_level(current_selection)
-        if not next_options:
-            plot_example(current_selection, seed)
-            break
+    # Render selectbox and get new selection
+    selection = st.selectbox(f"Select {selected}", options=options, key=key)
 
-        key = f"level_{level}"
-        # Only show the next selectbox if the previous one has a value
-        if key not in st.session_state or st.session_state[key] is None:
-            st.session_state[key] = st.selectbox(f"Select {current_selection}", next_options, key=key)
-            break  # Exit loop to wait for next selection
-        else:
-            # Previous selection exists, proceed to next level
-            current_selection = st.session_state[key]
-            level += 1
+    # If user hasn't made a selection yet, wait
+    if selection is None or selection == "":
+        break
+
+    # Move to next level
+    selected = selection
+    level += 1
