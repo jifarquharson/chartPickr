@@ -545,15 +545,35 @@ if st.button("🔄 Reset selection"):
     st.rerun()
 
 # --- Chart selection logic
-level = 0
-current_key = "level_0"
-selected = st.selectbox("Select chart category", options=["Comparison", "Distribution", "Relationship", "Composition"], key=current_key)
+    # Track current level
+    level = 0
+    current_selection = None
+    max_levels = 10
 
-while selected:
-    options = get_options_for_level(selected)
-    if not options:
-        plot_example(selected, seed)
-        break
-    level += 1
-    next_key = f"level_{level}"
-    selected = st.selectbox(f"Select {selected}", options=options, key=next_key)
+    # First dropdown (static)
+    if "level_0" not in st.session_state:
+        st.session_state["level_0"] = None
+
+    current_options = ["Comparison", "Distribution", "Relationship", "Composition"]
+    selection = st.selectbox("Select", current_options, key="level_0")
+    if selection:
+        current_selection = selection
+        level += 1
+
+    # Progressive levels
+    while current_selection and level < max_levels:
+        next_options = get_options_for_level(current_selection)
+        if not next_options:
+            plot_example(current_selection, seed)
+            break
+
+        key = f"level_{level}"
+        if key not in st.session_state:
+            st.session_state[key] = None
+
+        next_selection = st.selectbox(f"Select {current_selection}", next_options, key=key)
+        if next_selection:
+            current_selection = next_selection
+            level += 1
+        else:
+            break
