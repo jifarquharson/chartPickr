@@ -579,7 +579,7 @@ if st.button("🔄 Reset selection"):
     for key in list(st.session_state.keys()):
         if key.startswith("level_"):
             del st.session_state[key]
-    st.experimental_rerun()
+    st.rerun()
 
 # --- Plot after the button and dropdowns ---
 if current_selection and not get_options_for_level(current_selection):
