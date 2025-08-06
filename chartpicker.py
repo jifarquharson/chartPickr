@@ -549,7 +549,7 @@ key = f"level_{level}"
 if key not in st.session_state:
     st.session_state[key] = None
 
-selection = st.selectbox("Select", ["Comparison", "Distribution", "Relationship", "Composition"], key=key)
+selection = st.selectbox("What are you trying to show with your data?", ["Comparison", "Distribution", "Relationship", "Composition"], key=key)
 
 if selection:
     current_selection = selection
