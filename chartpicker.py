@@ -568,7 +568,7 @@ while current_selection and level < max_levels:
     options = get_options_for_level(current_selection)
 
     if not options:
-        plot_example(current_selection)
+        plot_example(current_selection, seed)
         break
 
     # Only create widget if key not in session_state or it's None
