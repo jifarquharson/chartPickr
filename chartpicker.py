@@ -317,7 +317,8 @@ def plot_matrix():
         ax.set_ylabel("")
         ax.set_xlabel("")
 
-    fig = ax_array[0, 0].figure
+    fig = axarr[0, 0].figure
+    plt.close(fig)
     return fig
 
 def circ_area_chart(seed):
