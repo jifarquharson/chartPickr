@@ -539,32 +539,46 @@ if seed is not None:
 else:
     st.write("Please enter a valid seed.")
 
-# --- Reset button
+# --- Reset button ---
 if st.button("🔄 Reset selection"):
     for key in list(st.session_state.keys()):
         if key.startswith("level_"):
             del st.session_state[key]
     st.rerun()
 
-# --- Chart selection logic
+# --- Chart selection logic ---
 level = 0
-selected = "start"  # or however you define the first level
+current_selection = None
+max_levels = 10
 
-while selected:
-    options = get_options_for_level(selected)
-    if not options:
-        plot_example(selected, seed)
-        break
+# Start with initial dropdown
+key = f"level_{level}"
+if key not in st.session_state:
+    st.session_state[key] = None
 
-    key = f"level_{level}"
+selection = st.selectbox("Select", ["Comparison", "Distribution", "Relationship", "Composition"], key=key)
 
-    # Render selectbox and get new selection
-    selection = st.selectbox(f"Select {selected}", options=options, key=key)
-
-    # If user hasn't made a selection yet, wait
-    if selection is None or selection == "":
-        break
-
-    # Move to next level
-    selected = selection
+if selection:
+    current_selection = selection
     level += 1
+
+# Loop through deeper levels
+while current_selection and level < max_levels:
+    key = f"level_{level}"
+    options = get_options_for_level(current_selection)
+
+    if not options:
+        plot_example(current_selection)
+        break
+
+    # Only create widget if key not in session_state or it's None
+    if key not in st.session_state:
+        st.session_state[key] = None
+
+    next_selection = st.selectbox(f"Select {current_selection}", options, key=key)
+
+    if next_selection:
+        current_selection = next_selection
+        level += 1
+    else:
+        break
