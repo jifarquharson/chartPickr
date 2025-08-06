@@ -16,7 +16,7 @@ def column_chart(seed):
     values2 = [np.random.randint(0, 10) for i in range(5)]
     bar_width = 0.35
     
-    fig = plt.figure(figsize = (1,1), dpi = 200)
+    fig = plt.figure(figsize = (1,1), dpi = 600)
     ax = fig.add_subplot(111)
     ax.bar(np.arange(len(categories)) - bar_width/2, values1,
            bar_width, label='Variable 1', alpha=0.85, color = "k")
@@ -37,7 +37,7 @@ def bar_chart(seed):
     values1 = [np.random.randint(0, 10) for i in range(10)]
     values2 = [np.random.randint(0, 10) for i in range(10)]
     bar_height = 0.9
-    fig = plt.figure(figsize = (1,1), dpi = 200)
+    fig = plt.figure(figsize = (1,1), dpi = 600)
     ax = fig.add_subplot(111)
     ax.barh(np.arange(len(categories)), values1,
             bar_height, label='Variable 1', color='k', alpha=1.)
@@ -58,7 +58,7 @@ def xy_chart(seed):
     values1 = [np.random.randint(0, 10)+i for i in range(10)]
     values2 = [np.random.random()+i for i in range(10)]
     
-    fig = plt.figure(figsize = (1,1), dpi = 200)
+    fig = plt.figure(figsize = (1,1), dpi = 600)
     ax = fig.add_subplot(111)
     ax.scatter(values1, values2,
             color='k',marker = ".", alpha=1.)
@@ -79,7 +79,7 @@ def bar_hist_chart(seed):
     np.random.seed(seed)
     values1 = [np.random.randint(0, 10) for i in range(30)]
 
-    fig = plt.figure(figsize = (1,1), dpi = 200)
+    fig = plt.figure(figsize = (1,1), dpi = 600)
     ax = fig.add_subplot(111)
     ax.hist(values1, bins = 6,
             color='k',alpha=1.)
@@ -95,7 +95,7 @@ def bar_hist_chart(seed):
 def line_hist_chart(seed):
     np.random.seed(seed)
     
-    fig = plt.figure(figsize = (1,1), dpi = 200)
+    fig = plt.figure(figsize = (1,1), dpi = 600)
     ax = fig.add_subplot(111)
     
     values = np.random.normal(loc=0, scale=1, size=1000)
@@ -115,7 +115,7 @@ def line_hist_chart(seed):
 def line_chart(seed):
     np.random.seed(seed)
     
-    fig = plt.figure(figsize = (1,1), dpi = 200)
+    fig = plt.figure(figsize = (1,1), dpi = 600)
     ax = fig.add_subplot(111)
     
     values1 = np.cumsum(np.random.randn(30))
@@ -134,7 +134,7 @@ def line_chart(seed):
 def mult_line_chart(seed):
     np.random.seed(seed)
     
-    fig = plt.figure(figsize = (1,1), dpi = 200)
+    fig = plt.figure(figsize = (1,1), dpi = 600)
     ax = fig.add_subplot(111)
     
     values1 = np.cumsum(np.random.randn(30))
@@ -155,7 +155,7 @@ def mult_line_chart(seed):
 def threeD_chart(seed):
     np.random.seed(seed)
     
-    fig = plt.figure(figsize = (1,1), dpi = 200)
+    fig = plt.figure(figsize = (1,1), dpi = 600)
     ax = fig.add_subplot(111, projection='3d')
     
     x = np.linspace(-5, 5, 50)
@@ -190,7 +190,7 @@ def bubble_chart(seed):
     values2 = [np.random.random()+i for i in range(10)]
     values3 = [np.random.randint(20, 120)*2 for i in range(10)]
     
-    fig = plt.figure(figsize = (1,1), dpi = 200)
+    fig = plt.figure(figsize = (1,1), dpi = 600)
     ax = fig.add_subplot(111)
     ax.scatter(values1, values2,s=values3,
             color='k',marker = ".", alpha=1.)
@@ -214,7 +214,7 @@ def waterfall_chart(seed):
     start = np.cumsum(change)-change
     df = pd.DataFrame({'cat':cats, "change": change, "start":start})
     
-    fig = plt.figure(figsize = (1,1), dpi = 200)
+    fig = plt.figure(figsize = (1,1), dpi = 600)
     ax = fig.add_subplot(111)
     ax.bar(np.arange(1,13,1),
         change,
@@ -233,7 +233,7 @@ def stack_col_chart(seed):
     categories = [1,2,3]
     values = np.array([[10, 20, 30], [15, 25, 35], [25, 35, 45]])
     
-    fig = plt.figure(figsize = (1,1), dpi = 200)
+    fig = plt.figure(figsize = (1,1), dpi = 600)
     ax = fig.add_subplot(111)
     ax.bar(categories, values[0], label='Component 1', color = "grey")
     ax.bar(categories, values[1], bottom=values[0], label='Component 2', color= "lightgrey")
@@ -255,7 +255,7 @@ def stack_area_chart(seed):
     categories = [1,2,3]
     values = np.array([[10, 20, 30], [15, 25, 35], [25, 35, 45]])
     
-    fig = plt.figure(figsize = (1,1), dpi = 200)
+    fig = plt.figure(figsize = (1,1), dpi = 600)
     ax = fig.add_subplot(111)
     
     ax.stackplot(categories, values[0], values[1], values[2],
@@ -278,7 +278,7 @@ def norm_stack_area_chart(seed):
     values = np.array([[10, 20, 30], [15, 25, 35], [25, 35, 45]])
     norm_values = values/np.sum(values, axis = 0)*100
 
-    fig = plt.figure(figsize = (1,1), dpi = 200)
+    fig = plt.figure(figsize = (1,1), dpi = 600)
     ax = fig.add_subplot(111)
     
     ax.stackplot(categories, norm_values[0], norm_values[1], norm_values[2],
@@ -321,7 +321,7 @@ def circ_area_chart(seed):
     theta = np.linspace(0, 2*np.pi, 12, endpoint=True)
     r = [3, 3, 3, 4, 2, 5, 3, 3, 3, 3, 3, 3]
     r = np.roll(r,np.random.randint(0,11))
-    fig = plt.figure(figsize = (1,1), dpi = 200)
+    fig = plt.figure(figsize = (1,1), dpi = 600)
     ax = fig.add_subplot(111, projection='polar')
     ax.fill_between(theta, 0, r, color ="k", alpha=1.)
     ax.yaxis.set_ticks([])
@@ -335,7 +335,7 @@ def pie_chart(seed):
     np.random.seed(seed)
     values = [np.random.random() for i in range(6)]
     
-    fig = plt.figure(figsize = (1,1), dpi = 200)
+    fig = plt.figure(figsize = (1,1), dpi = 600)
     ax = fig.add_subplot(111)#, projection='polar')
     ax.pie(values, startangle=30, colors="k", explode = [0.05, 0.05, 0.4,  0.05, 0.05, 0.05])
     ax.yaxis.set_ticks([])
@@ -351,7 +351,7 @@ def norm_component_chart(seed):
     values = np.array([[10, 20, 30], [15, 25, 35], [25, 35, 45]])
     norm_values = values/np.sum(values, axis = 0)*100
 
-    fig = plt.figure(figsize = (1,1), dpi = 200)
+    fig = plt.figure(figsize = (1,1), dpi = 600)
     ax = fig.add_subplot(111)
     ax.bar(categories, norm_values[0], label='Component 1', color = "k", width=0.5)
     ax.bar(categories, norm_values[1], bottom=norm_values[0], label='Component 2', color= "lightgrey", width=0.5)
@@ -378,7 +378,7 @@ def var_width_chart(seed):
     categories = ['A', 'B', 'C', 'D', 'E']
     values = [np.random.randint(0, 10) for i in range(5)]
     widths = [np.random.random() for i in range(5)]
-    fig = plt.figure(figsize = (1,1), dpi = 200)
+    fig = plt.figure(figsize = (1,1), dpi = 600)
     ax = fig.add_subplot(111)
     ax.bar(categories, values, width=widths, align='center', alpha=1, color = "k")
     ax.set_xlabel('Categories', fontsize = "xx-small")
@@ -396,7 +396,7 @@ def norm_stack_col_chart(seed):
     values = np.array([[10, 20, 30], [15, 25, 35], [25, 35, 45]])
     norm_values = values/np.sum(values, axis = 0)*100
     
-    fig = plt.figure(figsize = (1,1), dpi = 200)
+    fig = plt.figure(figsize = (1,1), dpi = 600)
     ax = fig.add_subplot(111)
     ax.bar(categories, norm_values[0], label='Component 1', color = "lightgrey")
     ax.bar(categories, norm_values[1], bottom=norm_values[0], label='Component 2', color= "darkgrey")
