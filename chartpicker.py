@@ -545,15 +545,36 @@ if st.button("🔄 Reset selection"):
     st.experimental_rerun()
 
 # --- Chart selection logic
-level = 0
-current_key = "level_0"
-selected = st.selectbox("Select chart category", options=["Comparison", "Distribution", "Relationship", "Composition"], key=current_key)
+# First level selector
+level_0 = st.selectbox("Select chart category", options=["Comparison", "Distribution", "Relationship", "Composition"], key="level_0")
 
-while selected:
-    options = get_options_for_level(selected)
-    if not options:
-        plot_example(selected, seed)
-        break
-    level += 1
-    next_key = f"level_{level}"
-    selected = st.selectbox(f"Select {selected}", options=options, key=next_key)
+if level_0:
+    # Second level selector appears only after first selection
+    level_1_options = get_options_for_level(level_0)
+    if level_1_options:
+        level_1 = st.selectbox(f"Select {level_0}", options=level_1_options, key="level_1")
+    else:
+        level_1 = None
+
+    if level_1:
+        # Third level selector appears only after second selection
+        level_2_options = get_options_for_level(level_1)
+        if level_2_options:
+            level_2 = st.selectbox(f"Select {level_1}", options=level_2_options, key="level_2")
+        else:
+            level_2 = None
+
+        if level_2:
+            # Fourth level selector (optional)
+            level_3_options = get_options_for_level(level_2)
+            if level_3_options:
+                level_3 = st.selectbox(f"Select {level_2}", options=level_3_options, key="level_3")
+            else:
+                level_3 = None
+
+            # Final selection to plot
+            final_selection = None
+            if not level_3 or not get_options_for_level(level_3):
+                final_selection = level_3 or level_2 or level_1 or level_0
+                if final_selection and seed is not None:
+                    plot_example(final_selection, seed)
