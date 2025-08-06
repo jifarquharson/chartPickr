@@ -506,10 +506,9 @@ def get_options_for_level(selected_option):
     return dist_dict.get(selected_option, [])
 
 # --- App start
-st.set_page_config(page_title="Chart Picker", layout="centered")
-st.title("Chart Picker")
-st.markdown("Follow the prompts to discover a chart type suited to your data.")
-
+st.set_page_config(page_title="chartPickr", layout="centered")
+st.title("chartPickr")
+st.markdown("chartPickr is a tool that can give an idea of which kind of chart to use, depending on what we want to show. Follow the prompts to discover a chart type suited to your data. Note that there are many other ways of visualising data!")
 # --- Seed input
 def get_seed():
     user_input = st.text_input("Please input an integer value from 0 to 4294967295: ", value="55346")
@@ -584,3 +583,7 @@ if st.button("🔄 Reset selection"):
         if key.startswith("level_"):
             del st.session_state[key]
     st.rerun()
+    
+    # --- Plot after the button ---
+if current_selection and not get_options_for_level(current_selection):
+    plot_example(current_selection, seed)
