@@ -302,7 +302,7 @@ def plot_matrix():
     target_names = iris.target_names
     fig = scatter_matrix(iris_df.iloc[:, :-1],
                    alpha=0.8,
-                   c=iris_df['target'],  figsize=(2, 2), cmap="Greys", diagonal='hist',
+                   c=iris_df['target'].to_numpy(),  figsize=(2, 2), cmap="Greys", diagonal='hist',
                         hist_kwds={'color':'lightgrey','edgecolor':'k', 'histtype':'stepfilled'})
 
     for ax in fig.flatten():
